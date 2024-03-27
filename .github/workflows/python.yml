@@ -26,3 +26,5 @@ jobs:
         run: make test
       - name: Analyze project with mypy
         run: make mypy
+      - name: Analyze project with flake8
+        run: make flake8

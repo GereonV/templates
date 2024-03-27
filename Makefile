@@ -3,6 +3,7 @@ override VENV_OK := $(VENV)/bin/activate
 override PYTHON := $(VENV)/bin/python3
 override PIP := $(VENV)/bin/pip
 MYPY := $(VENV)/bin/mypy
+FLAKE8 := $(VENV)/bin/flake8
 
 .PHONY: build run test mypy clean
 
@@ -22,6 +23,9 @@ test: $(VENV_OK)
 
 mypy: $(VENV_OK)
 	$(MYPY) src tests
+
+flake8: $(VENV_OK)
+	$(FLAKE8) src tests
 
 clean:
 	find . -name __pycache__ -exec rm -rf {} +
