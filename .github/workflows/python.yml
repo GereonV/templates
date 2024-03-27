@@ -1,8 +1,6 @@
 name: Python
 on:
   push:
-    branches:
-      - 'python'
   pull_request:
     branches:
       - 'python'
