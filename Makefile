@@ -19,7 +19,7 @@ run: $(VENV_OK)
 	$(PYTHON) -m template
 
 test: $(VENV_OK)
-	$(PYTHON) -m unittest discover -v -s tests
+	$(PYTHON) -m unittest discover -v -s tests -t .
 
 mypy: $(VENV_OK)
 	$(MYPY) src tests
