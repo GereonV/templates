@@ -6,10 +6,22 @@ description = "A starting point for Python projects"
 readme = "README.rst"
 requires-python = ">= 3.10"
 license.file = "LICENSE"
-# authors/maintainers
+authors = [{ name = "GereonV", email = "72784429+GereonV@users.noreply.github.com" }]
+# maintainers
 # keywords
-# classifiers
-# urls
+classifiers = [
+	"Development Status :: 3 - Alpha",
+	"Intended Audience :: Developers",
+	"License :: OSI Approved :: The Unlicense (Unlicense)",
+	"Operating System :: OS Independent",
+	"Programming Language :: Python :: 3.10",
+	"Topic :: Software Development",
+]
+urls.Homepage = "https://github.com/GereonV/templates"
+# urls.Documentation = "https://readthedocs.org"
+urls.Repository = "https://github.com/GereonV/templates.git"
+urls.Issues = "https://github.com/GereonV/templates/issues"
+# urls.Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 # Entry points
 dependencies = []
 # optional-dependencies
