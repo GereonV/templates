@@ -30,4 +30,4 @@ flake8: $(VENV_OK)
 clean:
 	find . -name __pycache__ -exec rm -rf {} +
 	find . -name '*.egg-info' -exec rm -rf {} +
-	rm -rf dist $(VENV)
+	rm -rf dist .mypy_cache $(VENV)
