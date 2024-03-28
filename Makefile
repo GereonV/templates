@@ -1,18 +1,27 @@
 VENV := venv
+PY := python3
 override VENV_OK := $(VENV)/bin/activate
 override PYTHON := $(VENV)/bin/python3
 override PIP := $(VENV)/bin/pip
 override MYPY := $(VENV)/bin/mypy
 override FLAKE8 := $(VENV)/bin/flake8
 
-.PHONY: build run test mypy clean
+.PHONY: build install uninstall run test mypy clean
 
-$(VENV_OK): requirements.txt
-	python3 -m venv $(VENV)
+$(VENV_OK): requirements.txt pyproject.toml
+	$(PY) -m venv $(VENV)
 	$(PIP) install -r $<
 
-build: $(VENV_OK)
+dist/: $(VENV_OK) src/ README.* LICENSE
+	rm -rf dist
 	$(PYTHON) -m build
+build: dist/
+
+install: build
+	$(PY) -m pip install --user dist/*.whl
+
+uninstall:
+	$(PY) -m pip uninstall template
 
 run: $(VENV_OK)
 	$(PYTHON) -m template
