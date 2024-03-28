@@ -2,15 +2,14 @@ VENV := venv
 override VENV_OK := $(VENV)/bin/activate
 override PYTHON := $(VENV)/bin/python3
 override PIP := $(VENV)/bin/pip
-MYPY := $(VENV)/bin/mypy
-FLAKE8 := $(VENV)/bin/flake8
+override MYPY := $(VENV)/bin/mypy
+override FLAKE8 := $(VENV)/bin/flake8
 
 .PHONY: build run test mypy clean
 
 $(VENV_OK): requirements.txt
 	python3 -m venv $(VENV)
 	$(PIP) install -r $<
-	$(PIP) install -e .
 
 build: $(VENV_OK)
 	$(PYTHON) -m build

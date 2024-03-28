@@ -1,3 +1,4 @@
 build
 mypy
 flake8
+-e .
