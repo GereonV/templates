@@ -1,0 +1,35 @@
+build:
+  stage: build
+  image: ubuntu:latest
+  script: |
+    apt update
+    apt install -y python3-venv make
+    make build
+test:
+  stage: build
+  image: ubuntu:latest
+  script: |
+    apt update
+    apt install -y python3-venv make
+    make test
+mypy:
+  stage: build
+  image: ubuntu:latest
+  script: |
+    apt update
+    apt install -y python3-venv make
+    make mypy
+flake8:
+  stage: build
+  image: ubuntu:latest
+  script: |
+    apt update
+    apt install -y python3-venv make
+    make flake8
+run:
+  stage: test
+  image: ubuntu:latest
+  script: |
+    apt update
+    apt install -y python3-venv make
+    make run
