@@ -30,7 +30,7 @@ test: $(VENV_OK)
 	$(PYTHON) -m unittest discover -v -s tests -t .
 
 mypy: $(VENV_OK)
-	$(MYPY) src tests
+	$(MYPY) --strict src tests
 
 flake8: $(VENV_OK)
 	$(FLAKE8) src tests
