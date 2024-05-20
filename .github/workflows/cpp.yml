@@ -1,0 +1,28 @@
+name: C++
+on:
+  push:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up C++
+        run: sudo apt-get update && sudo apt-get install -y g++
+      - name: Build project
+        run: make release
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: bin
+          path: bin
+  run:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: bin
+      - name: Run program
+        run: chmod 755 program && ./program

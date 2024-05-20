@@ -5,7 +5,7 @@ OBJDIR:=obj
 BIN:=bin/program
 
 CFLAGS:=@compile_flags.txt
-LDFLAGS:=-flto --gc-sections
+LDFLAGS:=-flto -Wl,--gc-sections
 
 DEBUGCFLAGS:=-Og -g -D _DEBUG
 DEBUGLDFLAGS:=-g
