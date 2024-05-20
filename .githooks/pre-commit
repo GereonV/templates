@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec 2>&1
+# If there are whitespace errors, print the offending file names and fail.
+git diff-index --check --cached HEAD -- || exit
+clang-format --dry-run --Werror src/* 2> /dev/null && exit
+echo 'run clang-format -i src/*'
+exit 1
