@@ -1,0 +1,15 @@
+build:
+  stage: build
+  image: ubuntu:latest
+  script: |
+    apt-get update
+    apt-get install -y g++ make
+    make release
+run:
+  stage: test
+  image: ubuntu:latest
+  script: |
+    apt-get update
+    apt-get install -y g++ make
+    make release
+    bin/program
