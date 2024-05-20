@@ -1,3 +1,3 @@
 # Project templates
 
-This repository contains templates for future projects.
+This directory is a starting point for C++ projects.

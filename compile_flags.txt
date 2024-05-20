@@ -1,0 +1,9 @@
+-std=c++20
+-Wall
+-Wextra
+-Wpedantic
+-Wconversion
+-Iinclude
+-flto
+-ffunction-sections
+-fdata-sections
