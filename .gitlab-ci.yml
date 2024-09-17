@@ -1,35 +1,30 @@
+default:
+  image: ubuntu:latest
+  before_script: |
+    apt-get update
+    apt-get install -y python3-venv make
+
 build:
   stage: build
-  image: ubuntu:latest
-  script: |
-    apt update
-    apt install -y python3-venv make
-    make build
+  script: make build
+  artifacts:
+    paths:
+      - dist/
+
 test:
-  stage: build
-  image: ubuntu:latest
-  script: |
-    apt update
-    apt install -y python3-venv make
-    make test
-mypy:
-  stage: build
-  image: ubuntu:latest
-  script: |
-    apt update
-    apt install -y python3-venv make
-    make mypy
-flake8:
-  stage: build
-  image: ubuntu:latest
-  script: |
-    apt update
-    apt install -y python3-venv make
-    make flake8
-run:
   stage: test
-  image: ubuntu:latest
-  script: |
-    apt update
-    apt install -y python3-venv make
-    make run
+  script: make test
+  needs: []
+mypy:
+  stage: test
+  script: make mypy
+  needs: []
+flake8:
+  stage: test
+  script: make flake8
+  needs: []
+install:
+  stage: test
+  script:
+    - python3 -m venv .venv
+    - .venv/bin/pip install dist/*.whl
