@@ -23,6 +23,7 @@ urls.Repository = "https://github.com/GereonV/templates.git"
 urls.Issues = "https://github.com/GereonV/templates/issues"
 # urls.Changelog = "https://github.com/me/spam/blob/master/CHANGELOG.md"
 # Entry points
+scripts = { template = "template:main" }
 dependencies = []
 # optional-dependencies
 dynamic = []

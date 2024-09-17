@@ -11,3 +11,7 @@ def invoke(
         **kwargs: Ts.kwargs
 ) -> R:
     return f(*args, **kwargs)
+
+
+def main() -> None:
+    invoke(print, "Hello, world!")
