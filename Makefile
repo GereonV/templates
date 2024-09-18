@@ -6,7 +6,7 @@ override PIP := $(VENV)/bin/pip
 override MYPY := $(VENV)/bin/mypy
 override FLAKE8 := $(VENV)/bin/flake8
 
-.PHONY: build install uninstall run test mypy clean
+.PHONY: build install uninstall run test mypy flake8 clean
 
 $(VENV_OK): requirements.txt pyproject.toml
 	$(PY) -m venv $(VENV)
