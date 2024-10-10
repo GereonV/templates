@@ -3,6 +3,13 @@
 exec 2>&1
 # If there are whitespace errors, print the offending file names and fail.
 git diff-index --check --cached HEAD -- || exit
-clang-format --dry-run --Werror src/* 2> /dev/null && exit
-echo 'run clang-format -i src/*'
-exit 1
+if ! clang-format --dry-run --Werror src/* 2> /dev/null
+then
+    echo 'run clang-format -i src/*'
+    exit 1
+fi
+if ! clang-tidy --quiet src/*
+then
+    echo 'clang-tidy failed; to skip use `git commit (-n|--no-verify)` (also skips commit-msg)'
+    exit 1
+fi
