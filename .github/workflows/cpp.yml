@@ -26,3 +26,25 @@ jobs:
           name: bin
       - name: Run program
         run: chmod 755 program && ./program
+  check-formatting:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install clang-format
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+      - name: Print clang-format version
+        run: clang-format --version
+      - name: Run clang-format
+        run: clang-format --dry-run --Werror src/*
+  lint:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install clang-tidy
+        run: sudo apt-get update && sudo apt-get install -y clang-format
+      - name: Run clang-tidy
+        run: clang-tidy src/*

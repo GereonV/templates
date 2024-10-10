@@ -1,15 +1,36 @@
+default:
+  image: ubuntu:latest
+
 build:
   stage: build
-  image: ubuntu:latest
-  script: |
-    apt-get update
-    apt-get install -y g++ make
-    make release
+  script:
+    - |
+      apt-get update
+      apt-get install -y g++ make
+    - make BIN=bin/program release
+  artifacts:
+    paths:
+      - bin/
+
 run:
   stage: test
-  image: ubuntu:latest
-  script: |
-    apt-get update
-    apt-get install -y g++ make
-    make release
-    bin/program
+  script: bin/program
+  variables:
+    GIT_STRATEGY: none
+check-formatting:
+  stage: test
+  allow_failure: true
+  script:
+    - |
+      apt-get update
+      apt-get install -y clang-format
+    - clang-format --dry-run --Werror src/*
+  needs: []
+lint:
+  stage: test
+  allow_failure: true
+  script:
+    - |
+      apt-get update
+      apt-get install -y clang-tidy
+    - clang-tidy src/*
