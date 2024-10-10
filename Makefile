@@ -1,17 +1,17 @@
 C:=g++
-SRCEXT:=cpp
-SRCDIR:=src
+override SRCEXT:=cpp
+override SRCDIR:=src
 OBJDIR:=obj
 BIN:=bin/program
 
-CFLAGS:=@compile_flags.txt
-LDFLAGS:=-flto -Wl,--gc-sections
+override CFLAGS:=@compile_flags.txt
+override LDFLAGS:=
 
-DEBUGCFLAGS:=-Og -g -D _DEBUG
-DEBUGLDFLAGS:=-g
+override DEBUGCFLAGS:=-Og -g -D _DEBUG
+override DEBUGLDFLAGS:=-g
 
-RELEASECFLAGS:=-O3
-RELEASELDFLAGS:=
+override RELEASECFLAGS:=-O3 -flto
+override RELEASELDFLAGS:=-flto
 
 .PHONY: debug release clean
 debug: CFLAGS+=$(DEBUGCFLAGS)
@@ -20,7 +20,7 @@ debug: $(BIN)
 release: CFLAGS+=$(RELEASECFLAGS)
 release: LDFLAGS+=$(RELEASELDFLAGS)
 release: $(BIN)
-OBJS:=$(patsubst $(SRCDIR)/%.$(SRCEXT),$(OBJDIR)/%.o,$(wildcard $(SRCDIR)/*.$(SRCEXT)))
+override OBJS:=$(patsubst $(SRCDIR)/%.$(SRCEXT),$(OBJDIR)/%.o,$(wildcard $(SRCDIR)/*.$(SRCEXT)))
 -include $(OBJS:%.o=%.d)
 $(BIN): $(dir $(BIN)) $(OBJS)
 	$(C) $(OBJS) -o $@ $(LDFLAGS)

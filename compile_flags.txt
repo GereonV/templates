@@ -4,6 +4,3 @@
 -Wpedantic
 -Wconversion
 -Iinclude
--flto
--ffunction-sections
--fdata-sections
