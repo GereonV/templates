@@ -1,0 +1,16 @@
+extends: default
+rules:
+  document-end:
+    present: false
+  document-start:
+    present: false
+  indentation:
+    spaces: 2
+    indent-sequences: false
+  key-duplicates: {}
+  line-length:
+    max: 80
+    level: warning
+  quoted-strings:
+    required: only-when-needed
+  trailing-spaces: {}

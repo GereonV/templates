@@ -1,30 +1,30 @@
 default:
-  image: ubuntu:latest
-  before_script: |
-    apt-get update
-    apt-get install -y python3-venv make
+  image: alpine:latest
+  before_script: apk add python3 make
 
 build:
   stage: build
   script: make build
   artifacts:
     paths:
-      - dist/
-
-test:
+    - dist/
+pre-commit:
+  image: python:latest
   stage: test
-  script: make test
   needs: []
-mypy:
-  stage: test
-  script: make mypy
-  needs: []
-flake8:
-  stage: test
-  script: make flake8
-  needs: []
+  variables:
+    PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
+  cache:
+    key: pre-commit
+    paths: ["${PRE_COMMIT_HOME}"]
+  before_script: pip install pre-commit
+  script: pre-commit run --color=always
+    --all-files
+    --hook-stage manual
+    --show-diff-on-failure
+    --verbose
 install:
   stage: test
   script:
-    - python3 -m venv .venv
-    - .venv/bin/pip install dist/*.whl
+  - python3 -m venv .venv
+  - .venv/bin/pip install dist/*.whl

@@ -10,12 +10,12 @@ authors = [{ name = "GereonV", email = "72784429+GereonV@users.noreply.github.co
 # maintainers
 # keywords
 classifiers = [
-	"Development Status :: 3 - Alpha",
-	"Intended Audience :: Developers",
-	"License :: OSI Approved :: The Unlicense (Unlicense)",
-	"Operating System :: OS Independent",
-	"Programming Language :: Python :: 3.10",
-	"Topic :: Software Development",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: The Unlicense (Unlicense)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Software Development",
 ]
 urls.Homepage = "https://github.com/GereonV/templates"
 # urls.Documentation = "https://readthedocs.org"
@@ -27,3 +27,6 @@ scripts = { template = "template:main" }
 dependencies = []
 # optional-dependencies
 dynamic = []
+
+[tool.black]
+line-length = 79

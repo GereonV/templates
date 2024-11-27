@@ -1,0 +1,15 @@
+[general]
+ignore=body-is-missing
+verbosity=3
+
+[title-max-length]
+line-length=80
+
+[title-min-length]
+min-length=5
+
+[body-max-line-length]
+line-length=120
+
+[body-min-length]
+min-length=5
