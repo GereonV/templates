@@ -1,6 +1,0 @@
-#!/bin/sh
-
-[ -z "$NESTED_CHECKOUT" ] || exit 0
-NESTED_CHECKOUT=1 git checkout --quiet -
-[ -f Makefile ] && make clean > /dev/null
-NESTED_CHECKOUT=1 git checkout --quiet -
