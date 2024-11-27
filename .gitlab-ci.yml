@@ -1,0 +1,15 @@
+pre-commit:
+  image: python:latest
+  stage: test
+  variables:
+    PRE_COMMIT_HOME: ${CI_PROJECT_DIR}/.cache/pre-commit
+  cache:
+    key: pre-commit
+    paths: ["${PRE_COMMIT_HOME}"]
+  script:
+  - pip install pre-commit
+  - pre-commit run --color=always
+    --all-files
+    --hook-stage manual
+    --show-diff-on-failure
+    --verbose
