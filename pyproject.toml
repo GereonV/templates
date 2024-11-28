@@ -25,7 +25,7 @@ urls.Issues = "https://github.com/GereonV/templates/issues"
 # Entry points
 scripts = { template = "template:main" }
 dependencies = []
-# optional-dependencies
+optional-dependencies.dev = ["mypy", "pytest"]
 dynamic = []
 
 [tool.black]

@@ -66,18 +66,17 @@ repos:
   hooks:
   - id: flake8
     args: [--ignore=E203, --color=always]  # spacing around ':' slicing-syntax
-- repo: https://github.com/pre-commit/mirrors-mypy
-  rev: v1.13.0
-  hooks:
-  - id: mypy
-    args: [--strict, --show-error-context, --pretty]
-    files: ^src/
 - repo: local
   hooks:
   - id: pytest
-    name: pytest
-    entry: pytest --color=yes tests
-    language: python
-    additional_dependencies: [pytest]
+    name: run 'make test'
+    entry: make test
+    language: system
+    pass_filenames: false
+    types: [python]
+  - id: mypy
+    name: run 'make mypy'
+    entry: make mypy
+    language: system
     pass_filenames: false
     types: [python]
