@@ -15,7 +15,7 @@ test: $(DEV)
 	$(PYTHON) -m pytest --color=yes tests
 mypy: $(DEV)
 	$(PYTHON) -m mypy --strict --show-error-context --pretty src tests
-$(DEV): env
+$(DEV): $(VENV)
 	$(PYTHON) -m pip install -e .[dev]
 
 .PHONY: build
@@ -23,7 +23,7 @@ build: dist/
 dist/: $(BUILD) src/ README.* LICENSE
 	rm -rf dist
 	$(PYTHON) -m build
-$(BUILD): env
+$(BUILD): $(VENV)
 	$(PYTHON) -m pip install build
 
 .PHONY: clean
