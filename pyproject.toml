@@ -28,5 +28,7 @@ dependencies = []
 optional-dependencies.dev = ["mypy", "pytest"]
 dynamic = []
 
-[tool.black]
-line-length = 79
+[tool]
+black.line-length = 79
+isort.profile = "black"
+isort.line_length = 79

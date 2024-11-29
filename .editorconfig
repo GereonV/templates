@@ -10,6 +10,10 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
+[*.py]
+# checked by other tools anyway and PEP8-continuations aren't idented in multiples of 4
+indent_size = unset
+
 [Makefile]
 indent_style = tab
 
