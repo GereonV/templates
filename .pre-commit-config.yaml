@@ -60,7 +60,7 @@ repos:
   rev: 5.13.2
   hooks:
   - id: isort
-    args: [--filter-files, --profile=black, --verbose, --color, --jobs=-1]
+    args: [--filter-files, --verbose, --color, --jobs=-1]
 - repo: https://github.com/pycqa/flake8
   rev: 7.1.1
   hooks:
@@ -70,13 +70,13 @@ repos:
 - repo: local
   hooks:
   - id: pytest
-    name: run 'make test'
+    name: run test
     entry: make test
     language: system
     pass_filenames: false
     types: [python]
   - id: mypy
-    name: run 'make mypy'
+    name: run mypy
     entry: make mypy
     language: system
     pass_filenames: false
