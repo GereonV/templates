@@ -1,7 +1,10 @@
 # https://peps.python.org/pep-0621/
+[build-system]
+requires = ["setuptools>=64", "setuptools-scm>=8"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "template"
-version = "0.1.0"
 description = "A starting point for Python projects"
 readme = "README.rst"
 requires-python = ">= 3.10"
@@ -26,7 +29,7 @@ urls.Issues = "https://github.com/GereonV/templates/issues"
 scripts = { template = "template:main" }
 dependencies = []
 optional-dependencies.dev = ["mypy", "pytest"]
-dynamic = []
+dynamic = ["version"]
 
 [tool]
 black.line-length = 79
